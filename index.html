@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="A romantic Valentine's Day gift for Karthika with fun games">
+    <meta name="theme-color" content="#667eea">
+    <title>Happy Valentine's Day Karthika! 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Intro Screen */
+        .intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .intro-content {
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+
+        .sparkle {
+            font-size: 4em;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .intro-title {
+            font-size: 2.5em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .big-heart {
+            font-size: 6em;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.05); }
+        }
+
+        .name-reveal {
+            font-size: 3em;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #ff6b6b, #ff8787, #ffd93d, #ff6b6b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .intro-message {
+            font-size: 1.5em;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .start-btn {
+            padding: 20px 50px;
+            font-size: 1.3em;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.5);
+        }
+
+        .intro-screen.fade-out {
+            animation: fadeOut 1s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 105, 180, 0.7);
+            transform: rotate(45deg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 105, 180, 0.7);
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            animation: slideIn 1s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #e91e63;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #e91e63;
+            margin: 20px 0;
+        }
+
+        .emoji {
+            font-size: 4em;
+            animation: pulse 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-btn {
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: white;
+        }
+
+        .game-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .no-btn {
+            background: #ddd;
+            color: #666;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            color: #2d3436;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .gift-note {
+            background: rgba(255, 255, 255, 0.9);
+            border-left: 5px solid #e91e63;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-style: italic;
+            color: #666;
+            text-align: left;
+        }
+
+        /* Memory Game */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .memory-card:hover {
+            transform: scale(1.05);
+        }
+
+        .memory-card.flipped {
+            background: white;
+        }
+
+        .memory-card.matched {
+            background: #a8e6cf;
+            pointer-events: none;
+        }
+
+        /* Love Calculator */
+        .calculator-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid #e91e63;
+            border-radius: 15px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .love-percentage {
+            font-size: 3em;
+            color: #e91e63;
+            font-weight: bold;
+            margin: 20px 0;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        /* Heart Catcher Game */
+        .game-canvas {
+            border: 3px solid #e91e63;
+            border-radius: 15px;
+            margin: 20px auto;
+            display: block;
+            background: white;
+            cursor: none;
+        }
+
+        .score-display {
+            font-size: 1.5em;
+            color: #e91e63;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Trivia Game */
+        .trivia-option {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .trivia-option:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .trivia-option.correct {
+            background: linear-gradient(135deg, #a8e6cf 0%, #56ab91 100%);
+        }
+
+        .trivia-option.wrong {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        }
+
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 575px) {
+            .container {
+                padding: 25px 15px;
+                width: 95%;
+            }
+
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.3em; }
+            .emoji { font-size: 2.5em; }
+            .message { font-size: 1em; }
+            
+            button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .memory-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .memory-card {
+                font-size: 1.5em;
+            }
+
+            .intro-title { font-size: 1.8em; }
+            .big-heart { font-size: 4em; }
+            .name-reveal { font-size: 2em; }
+            .intro-message { font-size: 1.2em; }
+            .start-btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            h1 { font-size: 2em; }
+            .memory-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Intro Screen -->
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-content">
+            <div class="sparkle">✨</div>
+            <h1 class="intro-title">Happy Valentine's Day!</h1>
+            <div class="big-heart">❤️</div>
+            <h2 class="name-reveal">Karthika</h2>
+            <p class="intro-message">I made this special gift with games just for you 💝</p>
+            <button class="start-btn" onclick="startExperience()">Open Your Gift 🎁</button>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div class="container hidden" id="mainMenu">
+        <div class="emoji">💝</div>
+        <h1>Hey Karthika! 💕</h1>
+        
+        <div class="gift-note">
+            <strong>💌 From Your Love:</strong><br>
+            I created this website with fun games especially for you! Play all the games and have fun, my dear Karthika! 💖
+        </div>
+        
+        <p class="message">Choose a game to play! 🎮</p>
+
+        <div class="buttons">
+            <button class="game-btn" onclick="showGame('memory')">💭 Memory Match</button>
+            <button class="game-btn" onclick="showGame('catcher')">❤️ Heart Catcher</button>
+            <button class="game-btn" onclick="showGame('calculator')">💕 Love Calculator</button>
+            <button class="game-btn" onclick="showGame('trivia')">🎯 Love Trivia</button>
+            <button class="game-btn" onclick="showGame('final')">💝 Final Surprise</button>
+        </div>
+    </div>
+
+    <!-- Memory Match Game -->
+    <div class="container hidden" id="memoryGame">
+        <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+        <h2>💭 Memory Match Game</h2>
+        <p class="message">Find all the matching pairs!</p>
+        <div class="score-display">Moves: <span id="moves">0</span> | Matches: <span id="matches">0</span>/6</div>
+        <div class="memory-grid" id="memoryGrid"></div>
+    </div>
+
+    <!-- Heart Catcher Game -->
+    <div class="container hidden" id="catcherGame">
+        <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+        <h2>❤️ Heart Catcher Game</h2>
+        <p class="message">Catch the falling hearts! Move your mouse/finger!</p>
+        <div class="score-display">Score: <span id="catchScore">0</span></div>
+        <canvas id="gameCanvas" class="game-canvas" width="300" height="400"></canvas>
+        <button class="game-btn" onclick="startCatcher()">Start Game</button>
+    </div>
+
+    <!-- Love Calculator -->
+    <div class="container hidden" id="calculatorGame">
+        <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+        <h2>💕 Love Calculator</h2>
+        <p class="message">Let's calculate our love compatibility!</p>
+        <input type="text" class="calculator-input" id="name1" placeholder="Your Name" value="Karthika">
+        <input type="text" class="calculator-input" id="name2" placeholder="Partner's Name">
+        <button class="game-btn" onclick="calculateLove()">Calculate Love! 💖</button>
+        <div id="loveResult" class="hidden">
+            <div class="love-percentage" id="percentage">100%</div>
+            <p class="message" id="loveMessage"></p>
+        </div>
+    </div>
+
+    <!-- Love Trivia -->
+    <div class="container hidden" id="triviaGame">
+        <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+        <h2>🎯 Love Trivia</h2>
+        <p class="message">How well do you know about us?</p>
+        <div class="score-display">Score: <span id="triviaScore">0</span>/5</div>
+        <div id="triviaContent"></div>
+    </div>
+
+    <!-- Final Message -->
+    <div class="container hidden" id="finalMessage">
+        <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+        <div class="emoji">💝</div>
+        <h1>Will You Be My Valentine This Year Too? 💕</h1>
+        <p class="message">
+            Karthika, I hope you enjoyed all the games! 💖<br>
+            Being with you is the greatest gift 🎁<br>
+            You make my heart so full of love ✨<br>
+            Every day with you is a blessing 🌟<br>
+        </p>
+        <div class="buttons">
+            <button class="yes-btn" onclick="sayYes()">Always! 💗</button>
+            <button class="no-btn" id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div class="celebration hidden" id="celebration"></div>
+
+    <script>
+        // Start Experience
+        function startExperience() {
+            const introScreen = document.getElementById('introScreen');
+            const mainMenu = document.getElementById('mainMenu');
+            
+            introScreen.classList.add('fade-out');
+            setTimeout(() => {
+                introScreen.style.display = 'none';
+                mainMenu.classList.remove('hidden');
+                startHearts();
+            }, 1000);
+        }
+
+        // Navigation
+        function showGame(game) {
+            document.getElementById('mainMenu').classList.add('hidden');
+            
+            if (game === 'memory') {
+                document.getElementById('memoryGame').classList.remove('hidden');
+                initMemoryGame();
+            } else if (game === 'catcher') {
+                document.getElementById('catcherGame').classList.remove('hidden');
+            } else if (game === 'calculator') {
+                document.getElementById('calculatorGame').classList.remove('hidden');
+            } else if (game === 'trivia') {
+                document.getElementById('triviaGame').classList.remove('hidden');
+                initTrivia();
+            } else if (game === 'final') {
+                document.getElementById('finalMessage').classList.remove('hidden');
+                initFinalNo();
+            }
+        }
+
+        function backToMenu() {
+            ['memoryGame', 'catcherGame', 'calculatorGame', 'triviaGame', 'finalMessage'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById('mainMenu').classList.remove('hidden');
+        }
+
+        // Floating Hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        let heartInterval;
+        function startHearts() {
+            heartInterval = setInterval(createHeart, 300);
+        }
+
+        // MEMORY MATCH GAME
+        let memoryCards = [];
+        let flippedCards = [];
+        let moves = 0;
+        let matches = 0;
+
+        function initMemoryGame() {
+            const emojis = ['❤️', '💕', '💖', '💝', '💗', '💘'];
+            memoryCards = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+            flippedCards = [];
+            moves = 0;
+            matches = 0;
+            
+            const grid = document.getElementById('memoryGrid');
+            grid.innerHTML = '';
+            
+            memoryCards.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                card.dataset.emoji = emoji;
+                card.dataset.index = index;
+                card.textContent = '?';
+                card.onclick = () => flipCard(card);
+                grid.appendChild(card);
+            });
+            
+            updateMemoryScore();
+        }
+
+        function flipCard(card) {
+            if (flippedCards.length === 2 || card.classList.contains('flipped') || card.classList.contains('matched')) {
+                return;
+            }
+            
+            card.classList.add('flipped');
+            card.textContent = card.dataset.emoji;
+            flippedCards.push(card);
+            
+            if (flippedCards.length === 2) {
+                moves++;
+                updateMemoryScore();
+                
+                setTimeout(() => {
+                    if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
+                        flippedCards.forEach(c => c.classList.add('matched'));
+                        matches++;
+                        updateMemoryScore();
+                        
+                        if (matches === 6) {
+                            setTimeout(() => alert('🎉 You won! All hearts matched! 💕'), 300);
+                        }
+                    } else {
+                        flippedCards.forEach(c => {
+                            c.classList.remove('flipped');
+                            c.textContent = '?';
+                        });
+                    }
+                    flippedCards = [];
+                }, 800);
+            }
+        }
+
+        function updateMemoryScore() {
+            document.getElementById('moves').textContent = moves;
+            document.getElementById('matches').textContent = matches;
+        }
+
+        // HEART CATCHER GAME
+        let catcherCanvas, catcherCtx;
+        let catcherRunning = false;
+        let catcherScore = 0;
+        let basket = { x: 135, y: 360, width: 60, height: 20 };
+        let fallingHearts = [];
+
+        function startCatcher() {
+            catcherCanvas = document.getElementById('gameCanvas');
+            catcherCtx = catcherCanvas.getContext('2d');
+            catcherScore = 0;
+            fallingHearts = [];
+            catcherRunning = true;
+            
+            document.getElementById('catchScore').textContent = catcherScore;
+            
+            catcherCanvas.addEventListener('mousemove', moveBucket);
+            catcherCanvas.addEventListener('touchmove', moveBucketTouch);
+            
+            gameLoop();
+            setInterval(() => {
+                if (catcherRunning) {
+                    fallingHearts.push({
+                        x: Math.random() * (catcherCanvas.width - 30),
+                        y: 0,
+                        speed: 2 + Math.random() * 2
+                    });
+                }
+            }, 1000);
+        }
+
+        function moveBucket(e) {
+            const rect = catcherCanvas.getBoundingClientRect();
+            basket.x = e.clientX - rect.left - basket.width / 2;
+        }
+
+        function moveBucketTouch(e) {
+            e.preventDefault();
+            const rect = catcherCanvas.getBoundingClientRect();
+            basket.x = e.touches[0].clientX - rect.left - basket.width / 2;
+        }
+
+        function gameLoop() {
+            if (!catcherRunning) return;
+            
+            catcherCtx.clearRect(0, 0, catcherCanvas.width, catcherCanvas.height);
+            
+            // Draw basket
+            catcherCtx.fillStyle = '#e91e63';
+            catcherCtx.fillRect(basket.x, basket.y, basket.width, basket.height);
+            
+            // Draw and update hearts
+            catcherCtx.font = '30px Arial';
+            fallingHearts.forEach((heart, index) => {
+                heart.y += heart.speed;
+                catcherCtx.fillText('❤️', heart.x, heart.y);
+                
+                // Check collision
+                if (heart.y >= basket.y && heart.y <= basket.y + basket.height &&
+                    heart.x >= basket.x && heart.x <= basket.x + basket.width) {
+                    catcherScore++;
+                    document.getElementById('catchScore').textContent = catcherScore;
+                    fallingHearts.splice(index, 1);
+                }
+                
+                // Remove if off screen
+                if (heart.y > catcherCanvas.height) {
+                    fallingHearts.splice(index, 1);
+                }
+            });
+            
+            requestAnimationFrame(gameLoop);
+        }
+
+        // LOVE CALCULATOR
+        function calculateLove() {
+            const name1 = document.getElementById('name1').value;
+            const name2 = document.getElementById('name2').value;
+            
+            if (!name1 || !name2) {
+                alert('Please enter both names! 💕');
+                return;
+            }
+            
+            // Always show high compatibility for Karthika!
+            const percentage = name1.toLowerCase().includes('karthika') || name2.toLowerCase().includes('karthika') 
+                ? 100 : 95 + Math.floor(Math.random() * 5);
+            
+            const messages = [
+                "Perfect match! You two are meant to be! 💕",
+                "Amazing! Your love is unbreakable! 💖",
+                "Soulmates! Destined to be together forever! 💝",
+                "Incredible compatibility! True love! ❤️"
+            ];
+            
+            document.getElementById('percentage').textContent = percentage + '%';
+            document.getElementById('loveMessage').textContent = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('loveResult').classList.remove('hidden');
+        }
+
+        // LOVE TRIVIA
+        let currentTriviaQ = 0;
+        let triviaScore = 0;
+
+        const triviaQuestions = [
+            {
+                question: "What makes our relationship special?",
+                options: ["Trust and Love", "Just luck", "Nothing special", "Don't know"],
+                correct: 0
+            },
+            {
+                question: "What's the most important thing in a relationship?",
+                options: ["Money", "Communication & Love", "Looks", "Fame"],
+                correct: 1
+            },
+            {
+                question: "How do I feel about you?",
+                options: ["You're okay", "I love you so much!", "Not sure", "Whatever"],
+                correct: 1
+            },
+            {
+                question: "What's the best part of Valentine's Day?",
+                options: ["Gifts", "Spending time with you", "Chocolate", "Nothing"],
+                correct: 1
+            },
+            {
+                question: "What does my heart say about you?",
+                options: ["You're my everything", "You're nice", "Nothing", "Maybe something"],
+                correct: 0
+            }
+        ];
+
+        function initTrivia() {
+            currentTriviaQ = 0;
+            triviaScore = 0;
+            document.getElementById('triviaScore').textContent = triviaScore;
+            showTriviaQuestion();
+        }
+
+        function showTriviaQuestion() {
+            if (currentTriviaQ >= triviaQuestions.length) {
+                document.getElementById('triviaContent').innerHTML = `
+                    <div class="gift-note">
+                        <h2>🎉 Quiz Complete!</h2>
+                        <p>You got ${triviaScore} out of ${triviaQuestions.length} correct!</p>
+                        <p>${triviaScore === triviaQuestions.length ? 'Perfect! You know everything about love! 💕' : 'Great job! Love is all that matters! ❤️'}</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const q = triviaQuestions[currentTriviaQ];
+            let html = `<h3>${q.question}</h3>`;
+            
+            q.options.forEach((option, index) => {
+                html += `<div class="trivia-option" onclick="answerTrivia(${index})">${option}</div>`;
+            });
+            
+            document.getElementById('triviaContent').innerHTML = html;
+        }
+
+        function answerTrivia(answer) {
+            const q = triviaQuestions[currentTriviaQ];
+            const options = document.querySelectorAll('.trivia-option');
+            
+            if (answer === q.correct) {
+                options[answer].classList.add('correct');
+                triviaScore++;
+                document.getElementById('triviaScore').textContent = triviaScore;
+            } else {
+                options[answer].classList.add('wrong');
+                options[q.correct].classList.add('correct');
+            }
+            
+            options.forEach(opt => opt.style.pointerEvents = 'none');
+            
+            setTimeout(() => {
+                currentTriviaQ++;
+                showTriviaQuestion();
+            }, 1500);
+        }
+
+        // FINAL MESSAGE
+        function initFinalNo() {
+            const noBtn = document.getElementById('noBtn');
+            let noHoverCount = 0;
+            
+            const moveButton = (e) => {
+                if (e) e.preventDefault();
+                noHoverCount++;
+                
+                const isMobile = window.innerWidth <= 767;
+                const maxX = isMobile ? window.innerWidth - noBtn.offsetWidth - 20 : window.innerWidth - noBtn.offsetWidth - 100;
+                const maxY = isMobile ? window.innerHeight - noBtn.offsetHeight - 20 : window.innerHeight - noBtn.offsetHeight - 100;
+                
+                const randomX = Math.max(20, Math.random() * maxX);
+                const randomY = Math.max(100, Math.random() * maxY);
+                
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = randomX + 'px';
+                noBtn.style.top = randomY + 'px';
+                noBtn.style.transition = 'all 0.3s ease';
+
+                const yesBtn = document.querySelector('.yes-btn');
+                const currentSize = parseFloat(getComputedStyle(yesBtn).fontSize);
+                yesBtn.style.fontSize = (currentSize + 2) + 'px';
+
+                const messages = ['Are you sure? 🥺', 'Really Karthika? 😢', 'Think again! 💔', 'Please? 🙏', 'Just say Yes! 💕'];
+                noBtn.textContent = messages[Math.min(noHoverCount - 1, messages.length - 1)];
+            };
+            
+            noBtn.addEventListener('mouseenter', moveButton);
+            noBtn.addEventListener('touchstart', moveButton);
+        }
+
+        function sayYes() {
+            const container = document.getElementById('finalMessage');
+            const celebration = document.getElementById('celebration');
+            
+            container.innerHTML = `
+                <div class="emoji">🎉</div>
+                <h1>I Love You So Much Karthika! 💕</h1>
+                
+                <div class="gift-note">
+                    <strong>💖 Happy Valentine's Day My Love!</strong><br>
+                    Thank you for playing all the games! I hope you had fun! You make every day special! 💝
+                </div>
+                
+                <p class="message">
+                    You make every day feel like Valentine's Day! 🌹<br>
+                    I'm so grateful to have you in my life 💖<br>
+                    You're my best friend, my love, my everything! ✨<br>
+                    I love you more than words can say! 🌟
+                </p>
+                
+                <div class="gift-note" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                    <strong>Let's make this Valentine's Day unforgettable!</strong><br>
+                    I have more surprises planned for you! 🎁<br>
+                    Can't wait to celebrate our love!<br><br>
+                    <em>Forever yours, Your Love 💝</em>
+                </div>
+            `;
+
+            celebration.classList.remove('hidden');
+
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = ['#ff6b6b', '#ee5a6f', '#c44569', '#f093fb', '#f5576c', '#ffd93d', '#6c5ce7'][Math.floor(Math.random() * 7)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    celebration.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 30);
+            }
+        }
+    </script>
+</body>
+</html>
